@@ -194,6 +194,7 @@ three_sensor_overlay/urdf/u701_three_sensor_extrinsics.urdf.xacro
 # Part 4 — Replay overlay for double checking
 
 ```bash
+BAG_PATH=/media/shuoyuan/CrucialX9/Antobot/bags/U701_0901_compressed_merged \
 ./run_three_sensor_overlay.sh
 ```
 Override only when using a different target:
