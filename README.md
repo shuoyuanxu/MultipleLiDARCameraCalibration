@@ -1,6 +1,7 @@
 Ported from https://github.com/koide3/direct_visual_lidar_calibration
 
 Edpendded to have all sensor calibrations for our Robot
+<img width="2512" height="1407" alt="1" src="https://github.com/user-attachments/assets/e84bc8b9-a20a-4d8f-ab76-91c31e08d342" />
 
 Extrinsics needed:
 
@@ -111,7 +112,8 @@ calibration_results/map_overlay_downsampled.ply
 ``` 
 # Part 2 — Camera-to-LiDAR
 
-<img width="2512" height="1407" alt="1" src="https://github.com/user-attachments/assets/e84bc8b9-a20a-4d8f-ab76-91c31e08d342" />
+<img width="2512" height="1407" alt="4" src="https://github.com/user-attachments/assets/66824614-864e-4636-94af-ca5683ac7542" />
+<img width="2512" height="1407" alt="1" src="https://github.com/user-attachments/assets/508bdbe1-4632-40aa-8a82-e4dfe73d0c0e" />
 
 ## 1. Data prep
 At each pose: stop the vehicle, wait for vibration to settle, then record for 10-15 seconds. **Never drive during a bag, drive only between bags**. Ensure that the tags or corners are visble in lidar, our experience is put Tags on transparent glass. Required topics:
@@ -190,9 +192,6 @@ three_sensor_overlay/urdf/u701_three_sensor_extrinsics.urdf
 three_sensor_overlay/urdf/u701_three_sensor_extrinsics.urdf.xacro
 ```
 # Part 4 — Replay overlay for double checking
-
-<img width="2512" height="1407" alt="4" src="https://github.com/user-attachments/assets/66824614-864e-4636-94af-ca5683ac7542" />
-<img width="2512" height="1407" alt="1" src="https://github.com/user-attachments/assets/508bdbe1-4632-40aa-8a82-e4dfe73d0c0e" />
 
 ```bash
 ./run_three_sensor_overlay.sh
