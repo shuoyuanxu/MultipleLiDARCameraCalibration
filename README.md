@@ -1,8 +1,8 @@
 Ported from https://github.com/koide3/direct_visual_lidar_calibration
 
-Edpendded to have all sensor calibrations for our U701 Robot
+Edpendded to have all sensor calibrations for our Robot
 
-Extrinsics are needed:
+Extrinsics needed:
 
 ```text
 
@@ -14,7 +14,8 @@ lidar_91 --T_lidar90_lidar91--> lidar_90
 
 Using column vectors, the conventions are:
 
-```text
+```text<img width="2512" height="1407" alt="4" src="https://github.com/user-attachments/assets/12bd283f-2351-47bd-82f0-280ea848e5e2" />
+
 
 p_lidar91 = T_lidar91_camera * p_camera
 
@@ -57,6 +58,9 @@ sudo ./scripts/install_nvidia_container_toolkit.sh
 - `calibration_vision_lidar91/calib.json` — camera optical frame into LiDAR 91.  
 
 # Part 1 — LiDAR-to-LiDAR result
+
+<img width="2512" height="1407" alt="1" src="https://github.com/user-attachments/assets/93319e86-3c43-43ad-9b16-89a6223eec0c" />
+<img width="2512" height="1407" alt="3" src="https://github.com/user-attachments/assets/ada5dfe1-45b8-4310-8b8c-a73a8c303d5a" />
 
 ## 1.  Data prep
 Mid360 LiDAR topics:
@@ -106,6 +110,9 @@ calibration_results/calibration_report.json
 calibration_results/map_overlay_downsampled.ply
 ``` 
 # Part 2 — Camera-to-LiDAR
+
+<img width="2512" height="1407" alt="1" src="https://github.com/user-attachments/assets/e84bc8b9-a20a-4d8f-ab76-91c31e08d342" />
+
 ## 1. Data prep
 At each pose: stop the vehicle, wait for vibration to settle, then record for 10-15 seconds. **Never drive during a bag, drive only between bags**. Ensure that the tags or corners are visble in lidar, our experience is put Tags on transparent glass. Required topics:
 ```bash
@@ -183,6 +190,10 @@ three_sensor_overlay/urdf/u701_three_sensor_extrinsics.urdf
 three_sensor_overlay/urdf/u701_three_sensor_extrinsics.urdf.xacro
 ```
 # Part 4 — Replay overlay for double checking
+
+<img width="2512" height="1407" alt="4" src="https://github.com/user-attachments/assets/66824614-864e-4636-94af-ca5683ac7542" />
+<img width="2512" height="1407" alt="1" src="https://github.com/user-attachments/assets/508bdbe1-4632-40aa-8a82-e4dfe73d0c0e" />
+
 ```bash
 ./run_three_sensor_overlay.sh
 ```
