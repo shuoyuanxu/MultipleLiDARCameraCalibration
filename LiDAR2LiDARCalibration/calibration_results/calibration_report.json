@@ -1,0 +1,1039 @@
+{
+  "transform_convention": {
+    "name": "T_lidar90_lidar91",
+    "direction": "lidar_91_to_lidar_90",
+    "equation": "p_lidar90 = T_lidar90_lidar91 @ p_lidar91",
+    "note": "Map and scan ICP are local refinements initialized by the trajectory estimate. Their agreement checks compatibility of the local solution; it is not an independent statistical validation."
+  },
+  "recommended": {
+    "name": "scan_to_scan",
+    "direction": "lidar_91_to_lidar_90",
+    "equation": "p_lidar90 = R * p_lidar91 + t",
+    "translation_m": {
+      "x": -1.323453816349579,
+      "y": -0.43575303238075747,
+      "z": -0.006422979621904385
+    },
+    "quaternion_xyzw": {
+      "x": -0.0041850570591592225,
+      "y": 0.00011523434144726626,
+      "z": -0.9999889683110051,
+      "w": 0.0021296184516176896
+    },
+    "rpy_xyz_deg": {
+      "r": -0.014226541434123252,
+      "p": -0.4795443998848163,
+      "y": -179.75590184248858
+    },
+    "matrix_T_lidar90_lidar91": [
+      [
+        -0.9999559000453242,
+        0.0042582253920702435,
+        0.00837051259218225,
+        -1.323453816349579
+      ],
+      [
+        -0.004260154441246769,
+        -0.9999909028925931,
+        -0.00021264099096718296,
+        -0.43575303238075747
+      ],
+      [
+        0.008369530971463026,
+        -0.0002482912899042165,
+        0.9999649440369156,
+        -0.006422979621904385
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "inverse_matrix_T_lidar91_lidar90": [
+      [
+        -0.9999559000453242,
+        -0.004260154441246769,
+        0.008369530971463026,
+        -1.3251980699855714
+      ],
+      [
+        0.0042582253920702435,
+        -0.9999909028925931,
+        -0.0002482912899042165,
+        -0.4301150984125023
+      ],
+      [
+        0.00837051259218225,
+        -0.00021264099096718296,
+        0.9999649440369156,
+        0.017408082336471273
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "diagnostics": {
+      "matched_scan_pairs": 57,
+      "scan_pair_tolerance_ms": 5.0,
+      "median_delta_91_minus_90_ms": -0.568832,
+      "maximum_absolute_delta_ms": 2.120192,
+      "matched_keyframe_indices": [
+        {
+          "lidar90": 1,
+          "lidar91": 1,
+          "delta_ms": 0.737024
+        },
+        {
+          "lidar90": 2,
+          "lidar91": 2,
+          "delta_ms": 0.667136
+        },
+        {
+          "lidar90": 6,
+          "lidar91": 6,
+          "delta_ms": 0.607744
+        },
+        {
+          "lidar90": 8,
+          "lidar91": 8,
+          "delta_ms": 0.769536
+        },
+        {
+          "lidar90": 9,
+          "lidar91": 9,
+          "delta_ms": -0.814592
+        },
+        {
+          "lidar90": 41,
+          "lidar91": 41,
+          "delta_ms": -0.565248
+        },
+        {
+          "lidar90": 43,
+          "lidar91": 43,
+          "delta_ms": -0.791296
+        },
+        {
+          "lidar90": 44,
+          "lidar91": 44,
+          "delta_ms": -1.164544
+        },
+        {
+          "lidar90": 57,
+          "lidar91": 57,
+          "delta_ms": 0.282624
+        },
+        {
+          "lidar90": 58,
+          "lidar91": 58,
+          "delta_ms": 0.60032
+        },
+        {
+          "lidar90": 59,
+          "lidar91": 59,
+          "delta_ms": 0.539904
+        },
+        {
+          "lidar90": 60,
+          "lidar91": 60,
+          "delta_ms": 1.089536
+        },
+        {
+          "lidar90": 62,
+          "lidar91": 62,
+          "delta_ms": 1.767168
+        },
+        {
+          "lidar90": 164,
+          "lidar91": 164,
+          "delta_ms": -0.715264
+        },
+        {
+          "lidar90": 165,
+          "lidar91": 165,
+          "delta_ms": -0.782592
+        },
+        {
+          "lidar90": 213,
+          "lidar91": 213,
+          "delta_ms": 0.193536
+        },
+        {
+          "lidar90": 214,
+          "lidar91": 214,
+          "delta_ms": 1.450752
+        },
+        {
+          "lidar90": 216,
+          "lidar91": 216,
+          "delta_ms": 0.62848
+        },
+        {
+          "lidar90": 217,
+          "lidar91": 217,
+          "delta_ms": 0.300032
+        },
+        {
+          "lidar90": 218,
+          "lidar91": 218,
+          "delta_ms": -0.258048
+        },
+        {
+          "lidar90": 219,
+          "lidar91": 219,
+          "delta_ms": -0.790272
+        },
+        {
+          "lidar90": 220,
+          "lidar91": 220,
+          "delta_ms": 0.300544
+        },
+        {
+          "lidar90": 221,
+          "lidar91": 221,
+          "delta_ms": -0.163584
+        },
+        {
+          "lidar90": 222,
+          "lidar91": 222,
+          "delta_ms": -0.469504
+        },
+        {
+          "lidar90": 224,
+          "lidar91": 224,
+          "delta_ms": -0.568832
+        },
+        {
+          "lidar90": 225,
+          "lidar91": 225,
+          "delta_ms": -0.878592
+        },
+        {
+          "lidar90": 226,
+          "lidar91": 226,
+          "delta_ms": 0.281344
+        },
+        {
+          "lidar90": 228,
+          "lidar91": 228,
+          "delta_ms": -0.931584
+        },
+        {
+          "lidar90": 233,
+          "lidar91": 233,
+          "delta_ms": -1.1904
+        },
+        {
+          "lidar90": 234,
+          "lidar91": 234,
+          "delta_ms": -1.01632
+        },
+        {
+          "lidar90": 235,
+          "lidar91": 235,
+          "delta_ms": -0.877568
+        },
+        {
+          "lidar90": 247,
+          "lidar91": 247,
+          "delta_ms": 0.414976
+        },
+        {
+          "lidar90": 303,
+          "lidar91": 303,
+          "delta_ms": -0.643584
+        },
+        {
+          "lidar90": 304,
+          "lidar91": 304,
+          "delta_ms": -1.01248
+        },
+        {
+          "lidar90": 305,
+          "lidar91": 305,
+          "delta_ms": -0.684032
+        },
+        {
+          "lidar90": 306,
+          "lidar91": 306,
+          "delta_ms": -0.836608
+        },
+        {
+          "lidar90": 307,
+          "lidar91": 307,
+          "delta_ms": -0.760064
+        },
+        {
+          "lidar90": 308,
+          "lidar91": 308,
+          "delta_ms": -0.738816
+        },
+        {
+          "lidar90": 309,
+          "lidar91": 309,
+          "delta_ms": -0.7168
+        },
+        {
+          "lidar90": 310,
+          "lidar91": 310,
+          "delta_ms": -0.758016
+        },
+        {
+          "lidar90": 311,
+          "lidar91": 311,
+          "delta_ms": -0.691712
+        },
+        {
+          "lidar90": 313,
+          "lidar91": 313,
+          "delta_ms": 0.118784
+        },
+        {
+          "lidar90": 314,
+          "lidar91": 314,
+          "delta_ms": -0.677632
+        },
+        {
+          "lidar90": 316,
+          "lidar91": 316,
+          "delta_ms": -0.648448
+        },
+        {
+          "lidar90": 317,
+          "lidar91": 317,
+          "delta_ms": -0.826112
+        },
+        {
+          "lidar90": 337,
+          "lidar91": 337,
+          "delta_ms": -0.848384
+        },
+        {
+          "lidar90": 338,
+          "lidar91": 338,
+          "delta_ms": -0.802304
+        },
+        {
+          "lidar90": 339,
+          "lidar91": 339,
+          "delta_ms": -1.008128
+        },
+        {
+          "lidar90": 347,
+          "lidar91": 347,
+          "delta_ms": -0.4928
+        },
+        {
+          "lidar90": 348,
+          "lidar91": 348,
+          "delta_ms": -0.244992
+        },
+        {
+          "lidar90": 354,
+          "lidar91": 354,
+          "delta_ms": 0.224256
+        },
+        {
+          "lidar90": 356,
+          "lidar91": 356,
+          "delta_ms": 0.557568
+        },
+        {
+          "lidar90": 416,
+          "lidar91": 416,
+          "delta_ms": -2.120192
+        },
+        {
+          "lidar90": 427,
+          "lidar91": 427,
+          "delta_ms": -0.164096
+        },
+        {
+          "lidar90": 430,
+          "lidar91": 430,
+          "delta_ms": 0.235264
+        },
+        {
+          "lidar90": 433,
+          "lidar91": 433,
+          "delta_ms": 0.139264
+        },
+        {
+          "lidar90": 438,
+          "lidar91": 438,
+          "delta_ms": -0.673024
+        }
+      ],
+      "icp_iterations": 54,
+      "last_inlier_correspondence_count": 15204,
+      "source_point_count": 190075,
+      "nearest_distance_median_m": 0.5692773210683484,
+      "nearest_distance_p90_m": 3.4830900144796715,
+      "overlap_fraction_at_0_20m": 0.256488228330922,
+      "all_point_to_plane_residual_median_m": 0.10856076924290234,
+      "overlap_point_to_plane_residual_median_m": 0.017743310751668274,
+      "overlap_point_to_plane_residual_p90_m": 0.08136844903045078
+    }
+  },
+  "validation": {
+    "pairwise_disagreement": [
+      {
+        "methods": [
+          "trajectory_to_trajectory",
+          "map_to_map"
+        ],
+        "translation_m": 0.01909724435647214,
+        "rotation_deg": 0.025415167538850383
+      },
+      {
+        "methods": [
+          "trajectory_to_trajectory",
+          "scan_to_scan"
+        ],
+        "translation_m": 0.01849304006836558,
+        "rotation_deg": 0.10088556616072075
+      },
+      {
+        "methods": [
+          "map_to_map",
+          "scan_to_scan"
+        ],
+        "translation_m": 0.006488371316578496,
+        "rotation_deg": 0.11069891001379988
+      }
+    ],
+    "maximum_pairwise_translation_disagreement_m": 0.01909724435647214,
+    "maximum_pairwise_rotation_disagreement_deg": 0.11069891001379988,
+    "methods_consistent": true,
+    "consistency_threshold_translation_m": 0.1,
+    "consistency_threshold_rotation_deg": 1.0,
+    "interpretation": "Agreement check only, not an independent statistical confidence interval. Map and scan ICP use the trajectory result as a local-registration seed, and the map estimate also uses optimized SLAM poses to remove map gauge."
+  },
+  "methods": {
+    "trajectory_to_trajectory": {
+      "name": "trajectory_to_trajectory",
+      "direction": "lidar_91_to_lidar_90",
+      "equation": "p_lidar90 = R * p_lidar91 + t",
+      "translation_m": {
+        "x": -1.3299586549043012,
+        "y": -0.43682175278114854,
+        "z": 0.010855256487518438
+      },
+      "quaternion_xyzw": {
+        "x": -0.00402631252861812,
+        "y": 3.539179098874143e-05,
+        "z": -0.9999910906534845,
+        "w": 0.0012673470311791988
+      },
+      "rpy_xyz_deg": {
+        "r": -0.004640445214432888,
+        "p": -0.4613771655283517,
+        "y": -179.85475282792254
+      },
+      "matrix_T_lidar90_lidar91": [
+        [
+          -0.9999643652778489,
+          0.0025343864830677494,
+          0.008052643020971724,
+          -1.3299586549043012
+        ],
+        [
+          -0.0025349564767136222,
+          -0.9999967851578475,
+          -6.057748088253585e-05,
+          -0.43682175278114854
+        ],
+        [
+          0.008052463606246773,
+          -8.098842180151101e-05,
+          0.9999675751096861,
+          0.010855256487518438
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "inverse_matrix_T_lidar91_lidar90": [
+        [
+          -0.9999643652778489,
+          -0.0025349564767136222,
+          0.008052463606246773,
+          -1.3311059978863455
+        ],
+        [
+          0.0025343864830677494,
+          -0.9999967851578475,
+          -8.098842180151101e-05,
+          -0.433448840080045
+        ],
+        [
+          0.008052643020971724,
+          -6.057748088253585e-05,
+          0.9999675751096861,
+          -0.0001716837877996126
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "diagnostics": {
+        "pair_count": 21732,
+        "median_delta_91_minus_90_ms": -0.18176,
+        "p95_absolute_delta_ms": 1.9555584000000004,
+        "maximum_absolute_delta_ms": 4.180736,
+        "relative_motion_count": 4539,
+        "optimizer_motion_count": 3000,
+        "solver_success": true,
+        "solver_message": "`ftol` termination condition is satisfied.",
+        "rotation_residual_median_deg": 0.07420500533492942,
+        "rotation_residual_p95_deg": 0.2361677655223199,
+        "translation_residual_median_m": 0.004335313065534485,
+        "translation_residual_p95_m": 0.011349244862360323,
+        "translation_observability_singular_values": [
+          13.985897098071392,
+          13.98510474641068,
+          0.4953799275902666
+        ],
+        "weakest_to_strongest_translation_observability_ratio": 0.03541996084459808
+      }
+    },
+    "map_to_map": {
+      "name": "map_to_map",
+      "direction": "lidar_91_to_lidar_90",
+      "equation": "p_lidar90 = R * p_lidar91 + t",
+      "translation_m": {
+        "x": -1.3277741400599263,
+        "y": -0.4404009601382055,
+        "z": -0.0077759515141303595
+      },
+      "quaternion_xyzw": {
+        "x": -0.0041386860413228956,
+        "y": 0.0001989796819926726,
+        "z": -0.9999907332851292,
+        "w": 0.0011683444727844953
+      },
+      "rpy_xyz_deg": {
+        "r": -0.023356078636001042,
+        "p": -0.4742328658282791,
+        "y": -179.86601974683387
+      },
+      "matrix_T_lidar90_lidar91": [
+        [
+          -0.9999630124980885,
+          0.0023350202632740503,
+          0.008277760332222127,
+          -1.3277741400599263
+        ],
+        [
+          -0.0023383143210035304,
+          -0.9999971907565581,
+          -0.00038828485428744913,
+          -0.4404009601382055
+        ],
+        [
+          0.008276830424975515,
+          -0.0004076264981313289,
+          0.999965663369875,
+          -0.0077759515141303595
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "inverse_matrix_T_lidar91_lidar90": [
+        [
+          -0.9999630124980885,
+          -0.0023383143210035304,
+          0.008276830424975515,
+          -1.3286904646513824
+        ],
+        [
+          0.0023350202632740503,
+          -0.9999971907565581,
+          -0.0004076264981313289,
+          -0.4373025131064906
+        ],
+        [
+          0.008277760332222127,
+          -0.00038828485428744913,
+          0.999965663369875,
+          0.018595679598262436
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "diagnostics": {
+        "map_voxel_size_m": 0.25,
+        "raw_map90_points": 695646,
+        "raw_map91_points": 707794,
+        "gauge_transform_map91_to_map90": [
+          [
+            -0.9998553438135446,
+            0.0013661736781814288,
+            -0.016953613684941603,
+            -1.3659445661580383
+          ],
+          [
+            -0.0013042691345420692,
+            -0.9999924445585506,
+            -0.0036619267931284447,
+            -0.4849687212720646
+          ],
+          [
+            -0.01695848842090223,
+            -0.003639284997715253,
+            0.9998495713231971,
+            -0.034382574543231875
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "gauge_seed_map91_to_map90": [
+          [
+            -0.9998649210657682,
+            0.0014168107535593641,
+            -0.016374744866230126,
+            -1.3570184630728443
+          ],
+          [
+            -0.0013560435153650303,
+            -0.9999921556056313,
+            -0.003721541775624266,
+            -0.4846066976465071
+          ],
+          [
+            -0.01637988913668123,
+            -0.0036988342071359068,
+            0.9998589989880465,
+            -0.012073843511622422
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "icp_iterations": 52,
+        "last_inlier_correspondence_count": 25919,
+        "target_downsampled_points": 69397,
+        "source_downsampled_points": 70674,
+        "forward_nearest_median_m": 0.08648233040607467,
+        "forward_nearest_p95_m": 0.3576121807322508,
+        "reverse_nearest_median_m": 0.08610603771272735,
+        "reverse_nearest_p95_m": 0.36749207567316394,
+        "symmetric_overlap_fraction_at_0_30m": 0.9306456851684429,
+        "point_to_plane_residual_median_m": 0.02391238501240755,
+        "point_to_plane_residual_p90_m": 0.10978974577746205,
+        "interpolated_pose_samples": 4351,
+        "pose_rotation_scatter_median_deg": 0.13958570195511263,
+        "pose_rotation_scatter_p95_deg": 0.7177200932769388,
+        "pose_translation_scatter_median_m": 0.013440531235209439,
+        "pose_translation_scatter_p95_m": 0.05381153746283365
+      }
+    },
+    "scan_to_scan": {
+      "name": "scan_to_scan",
+      "direction": "lidar_91_to_lidar_90",
+      "equation": "p_lidar90 = R * p_lidar91 + t",
+      "translation_m": {
+        "x": -1.323453816349579,
+        "y": -0.43575303238075747,
+        "z": -0.006422979621904385
+      },
+      "quaternion_xyzw": {
+        "x": -0.0041850570591592225,
+        "y": 0.00011523434144726626,
+        "z": -0.9999889683110051,
+        "w": 0.0021296184516176896
+      },
+      "rpy_xyz_deg": {
+        "r": -0.014226541434123252,
+        "p": -0.4795443998848163,
+        "y": -179.75590184248858
+      },
+      "matrix_T_lidar90_lidar91": [
+        [
+          -0.9999559000453242,
+          0.0042582253920702435,
+          0.00837051259218225,
+          -1.323453816349579
+        ],
+        [
+          -0.004260154441246769,
+          -0.9999909028925931,
+          -0.00021264099096718296,
+          -0.43575303238075747
+        ],
+        [
+          0.008369530971463026,
+          -0.0002482912899042165,
+          0.9999649440369156,
+          -0.006422979621904385
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "inverse_matrix_T_lidar91_lidar90": [
+        [
+          -0.9999559000453242,
+          -0.004260154441246769,
+          0.008369530971463026,
+          -1.3251980699855714
+        ],
+        [
+          0.0042582253920702435,
+          -0.9999909028925931,
+          -0.0002482912899042165,
+          -0.4301150984125023
+        ],
+        [
+          0.00837051259218225,
+          -0.00021264099096718296,
+          0.9999649440369156,
+          0.017408082336471273
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "diagnostics": {
+        "matched_scan_pairs": 57,
+        "scan_pair_tolerance_ms": 5.0,
+        "median_delta_91_minus_90_ms": -0.568832,
+        "maximum_absolute_delta_ms": 2.120192,
+        "matched_keyframe_indices": [
+          {
+            "lidar90": 1,
+            "lidar91": 1,
+            "delta_ms": 0.737024
+          },
+          {
+            "lidar90": 2,
+            "lidar91": 2,
+            "delta_ms": 0.667136
+          },
+          {
+            "lidar90": 6,
+            "lidar91": 6,
+            "delta_ms": 0.607744
+          },
+          {
+            "lidar90": 8,
+            "lidar91": 8,
+            "delta_ms": 0.769536
+          },
+          {
+            "lidar90": 9,
+            "lidar91": 9,
+            "delta_ms": -0.814592
+          },
+          {
+            "lidar90": 41,
+            "lidar91": 41,
+            "delta_ms": -0.565248
+          },
+          {
+            "lidar90": 43,
+            "lidar91": 43,
+            "delta_ms": -0.791296
+          },
+          {
+            "lidar90": 44,
+            "lidar91": 44,
+            "delta_ms": -1.164544
+          },
+          {
+            "lidar90": 57,
+            "lidar91": 57,
+            "delta_ms": 0.282624
+          },
+          {
+            "lidar90": 58,
+            "lidar91": 58,
+            "delta_ms": 0.60032
+          },
+          {
+            "lidar90": 59,
+            "lidar91": 59,
+            "delta_ms": 0.539904
+          },
+          {
+            "lidar90": 60,
+            "lidar91": 60,
+            "delta_ms": 1.089536
+          },
+          {
+            "lidar90": 62,
+            "lidar91": 62,
+            "delta_ms": 1.767168
+          },
+          {
+            "lidar90": 164,
+            "lidar91": 164,
+            "delta_ms": -0.715264
+          },
+          {
+            "lidar90": 165,
+            "lidar91": 165,
+            "delta_ms": -0.782592
+          },
+          {
+            "lidar90": 213,
+            "lidar91": 213,
+            "delta_ms": 0.193536
+          },
+          {
+            "lidar90": 214,
+            "lidar91": 214,
+            "delta_ms": 1.450752
+          },
+          {
+            "lidar90": 216,
+            "lidar91": 216,
+            "delta_ms": 0.62848
+          },
+          {
+            "lidar90": 217,
+            "lidar91": 217,
+            "delta_ms": 0.300032
+          },
+          {
+            "lidar90": 218,
+            "lidar91": 218,
+            "delta_ms": -0.258048
+          },
+          {
+            "lidar90": 219,
+            "lidar91": 219,
+            "delta_ms": -0.790272
+          },
+          {
+            "lidar90": 220,
+            "lidar91": 220,
+            "delta_ms": 0.300544
+          },
+          {
+            "lidar90": 221,
+            "lidar91": 221,
+            "delta_ms": -0.163584
+          },
+          {
+            "lidar90": 222,
+            "lidar91": 222,
+            "delta_ms": -0.469504
+          },
+          {
+            "lidar90": 224,
+            "lidar91": 224,
+            "delta_ms": -0.568832
+          },
+          {
+            "lidar90": 225,
+            "lidar91": 225,
+            "delta_ms": -0.878592
+          },
+          {
+            "lidar90": 226,
+            "lidar91": 226,
+            "delta_ms": 0.281344
+          },
+          {
+            "lidar90": 228,
+            "lidar91": 228,
+            "delta_ms": -0.931584
+          },
+          {
+            "lidar90": 233,
+            "lidar91": 233,
+            "delta_ms": -1.1904
+          },
+          {
+            "lidar90": 234,
+            "lidar91": 234,
+            "delta_ms": -1.01632
+          },
+          {
+            "lidar90": 235,
+            "lidar91": 235,
+            "delta_ms": -0.877568
+          },
+          {
+            "lidar90": 247,
+            "lidar91": 247,
+            "delta_ms": 0.414976
+          },
+          {
+            "lidar90": 303,
+            "lidar91": 303,
+            "delta_ms": -0.643584
+          },
+          {
+            "lidar90": 304,
+            "lidar91": 304,
+            "delta_ms": -1.01248
+          },
+          {
+            "lidar90": 305,
+            "lidar91": 305,
+            "delta_ms": -0.684032
+          },
+          {
+            "lidar90": 306,
+            "lidar91": 306,
+            "delta_ms": -0.836608
+          },
+          {
+            "lidar90": 307,
+            "lidar91": 307,
+            "delta_ms": -0.760064
+          },
+          {
+            "lidar90": 308,
+            "lidar91": 308,
+            "delta_ms": -0.738816
+          },
+          {
+            "lidar90": 309,
+            "lidar91": 309,
+            "delta_ms": -0.7168
+          },
+          {
+            "lidar90": 310,
+            "lidar91": 310,
+            "delta_ms": -0.758016
+          },
+          {
+            "lidar90": 311,
+            "lidar91": 311,
+            "delta_ms": -0.691712
+          },
+          {
+            "lidar90": 313,
+            "lidar91": 313,
+            "delta_ms": 0.118784
+          },
+          {
+            "lidar90": 314,
+            "lidar91": 314,
+            "delta_ms": -0.677632
+          },
+          {
+            "lidar90": 316,
+            "lidar91": 316,
+            "delta_ms": -0.648448
+          },
+          {
+            "lidar90": 317,
+            "lidar91": 317,
+            "delta_ms": -0.826112
+          },
+          {
+            "lidar90": 337,
+            "lidar91": 337,
+            "delta_ms": -0.848384
+          },
+          {
+            "lidar90": 338,
+            "lidar91": 338,
+            "delta_ms": -0.802304
+          },
+          {
+            "lidar90": 339,
+            "lidar91": 339,
+            "delta_ms": -1.008128
+          },
+          {
+            "lidar90": 347,
+            "lidar91": 347,
+            "delta_ms": -0.4928
+          },
+          {
+            "lidar90": 348,
+            "lidar91": 348,
+            "delta_ms": -0.244992
+          },
+          {
+            "lidar90": 354,
+            "lidar91": 354,
+            "delta_ms": 0.224256
+          },
+          {
+            "lidar90": 356,
+            "lidar91": 356,
+            "delta_ms": 0.557568
+          },
+          {
+            "lidar90": 416,
+            "lidar91": 416,
+            "delta_ms": -2.120192
+          },
+          {
+            "lidar90": 427,
+            "lidar91": 427,
+            "delta_ms": -0.164096
+          },
+          {
+            "lidar90": 430,
+            "lidar91": 430,
+            "delta_ms": 0.235264
+          },
+          {
+            "lidar90": 433,
+            "lidar91": 433,
+            "delta_ms": 0.139264
+          },
+          {
+            "lidar90": 438,
+            "lidar91": 438,
+            "delta_ms": -0.673024
+          }
+        ],
+        "icp_iterations": 54,
+        "last_inlier_correspondence_count": 15204,
+        "source_point_count": 190075,
+        "nearest_distance_median_m": 0.5692773210683484,
+        "nearest_distance_p90_m": 3.4830900144796715,
+        "overlap_fraction_at_0_20m": 0.256488228330922,
+        "all_point_to_plane_residual_median_m": 0.10856076924290234,
+        "overlap_point_to_plane_residual_median_m": 0.017743310751668274,
+        "overlap_point_to_plane_residual_p90_m": 0.08136844903045078
+      }
+    }
+  },
+  "input_paths": {
+    "lidar90_dir": "/media/shuoyuan/CrucialX9/Antobot/bags/U701_0901_compressed_merged/fastlio_independent_runs/run_20260902_151447/lidar_90/attempt_001",
+    "lidar91_dir": "/media/shuoyuan/CrucialX9/Antobot/bags/U701_0901_compressed_merged/fastlio_independent_runs/run_20260902_151447/lidar_91/attempt_001",
+    "lidar90_trajectory": "/media/shuoyuan/CrucialX9/Antobot/bags/U701_0901_compressed_merged/fastlio_independent_runs/run_20260902_151447/lidar_90/attempt_001/trajectory_scan_poses_lidar.csv",
+    "lidar91_trajectory": "/media/shuoyuan/CrucialX9/Antobot/bags/U701_0901_compressed_merged/fastlio_independent_runs/run_20260902_151447/lidar_91/attempt_001/trajectory_scan_poses_lidar.csv"
+  }
+}

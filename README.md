@@ -1,47 +1,196 @@
-# direct_visual_lidar_calibration
+Ported from https://github.com/koide3/direct_visual_lidar_calibration
 
-This package provides a toolbox for LiDAR-camera calibration that is: 
+Edpendded to have all sensor calibrations for our U701 Robot
 
-- **Generalizable**: It can handle various LiDAR and camera projection models including spinning and non-repetitive scan LiDARs, and pinhole, fisheye, and omnidirectional projection cameras.
-- **Target-less**: It does not require a calibration target but uses the environment structure and texture for calibration.
-- **Single-shot**: At a minimum, only one pairing of a LiDAR point cloud and a camera image is required for calibration. Optionally, multiple LiDAR-camera data pairs can be used for improving the accuracy.
-- **Automatic**: The calibration process is automatic and does not require an initial guess.
-- **Accurate and robust**: It employs a pixel-level direct LiDAR-camera registration algorithm that is more robust and accurate compared to edge-based indirect LiDAR-camera registration.
+Extrinsics are needed:
 
-**Documentation: [https://koide3.github.io/direct_visual_lidar_calibration/](https://koide3.github.io/direct_visual_lidar_calibration/)**  
-**Docker hub: [koide3/direct_visual_lidar_calibration](https://hub.docker.com/repository/docker/koide3/direct_visual_lidar_calibration)**
+```text
 
-[![Build](https://github.com/koide3/direct_visual_lidar_calibration/actions/workflows/push.yaml/badge.svg)](https://github.com/koide3/direct_visual_lidar_calibration/actions/workflows/push.yaml) [![Docker Image Size (latest by date)](https://img.shields.io/docker/image-size/koide3/direct_visual_lidar_calibration)](https://hub.docker.com/repository/docker/koide3/direct_visual_lidar_calibration)
+camera_color_optical_frame --T_lidar91_camera--> lidar_91
 
-![213393920-501f754f-c19f-4bab-af82-76a70d2ec6c6](https://user-images.githubusercontent.com/31344317/213427328-ddf72a71-9aeb-42e8-86a5-9c2ae19890e3.jpg)
+lidar_91 --T_lidar90_lidar91--> lidar_90
 
-[Video](https://www.youtube.com/watch?v=7TM7wGthinc&feature=youtu.be)
+```
 
-## Dependencies
+Using column vectors, the conventions are:
 
-- [ROS1/ROS2](https://www.ros.org/)
-- [PCL](https://pointclouds.org/)
-- [OpenCV](https://opencv.org/)
-- [GTSAM](https://gtsam.org/)
-- [Ceres](http://ceres-solver.org/)
-- [Iridescence](https://github.com/koide3/iridescence)
-- [SuperGlue](https://github.com/magicleap/SuperGluePretrainedNetwork) [optional]
+```text
 
-## Getting started
+p_lidar91 = T_lidar91_camera * p_camera
 
-1. [Installation](https://koide3.github.io/direct_visual_lidar_calibration/installation/) / [Docker images](https://koide3.github.io/direct_visual_lidar_calibration/docker/)
-2. [Data collection](https://koide3.github.io/direct_visual_lidar_calibration/collection/)
-3. [Calibration example](https://koide3.github.io/direct_visual_lidar_calibration/example/)
-4. [Program details](https://koide3.github.io/direct_visual_lidar_calibration/programs/)
+p_lidar90 = T_lidar90_lidar91 * p_lidar91
 
-## License
+p_lidar90 = T_lidar90_lidar91 * T_lidar91_camera * p_camera
 
-This package is released under the MIT license.
+```
+# Installation Guide
+Tested with Ubuntu 22.04 and ROS 2 Humble.
+### Dependencies:
+```bash
+sudo apt update
+sudo apt install -y \
+python3-colcon-common-extensions python3-numpy python3-opencv \
+python3-scipy python3-yaml \
+ros-humble-apriltag-ros ros-humble-cv-bridge \
+ros-humble-robot-state-publisher ros-humble-rviz2 \
+ros-humble-tf2-ros ros-humble-xacro
+```
+### Download and build camera-LiDAR calibrator
+```bash
+git clone --recursive \
+https://github.com/shuoyuanxu/direct_visual_lidar_calibration-main.git \
+cd ~/direct_visual_lidar_calibration-main
+./docker/vlcal.sh pull
+./docker/vlcal.sh doctor
+```
+### NVIDIA acceleration (must!)
+If `nvidia-smi` works on the host, enable NVIDIA support for Docker with the helper included in the cloned repository:
+```bash
+sudo ./scripts/install_nvidia_container_toolkit.sh
+./docker/vlcal.sh doctor
+```
 
-## Publication
+# Existing results   
 
-Koide et al., General, Single-shot, Target-less, and Automatic LiDAR-Camera Extrinsic Calibration Toolbox, ICRA2023, [[PDF]](https://staff.aist.go.jp/k.koide/assets/pdf/icra2023.pdf)
+- `calibration_results/extrinsic_lidar91_to_lidar90.yaml` — LiDAR 91 into LiDAR 90.
 
-## Contact
+- `calibration_vision_lidar91/calib.json` — camera optical frame into LiDAR 91.  
 
-Kenji Koide, National Institute of Advanced Industrial Science and Technology (AIST), Japan
+# Part 1 — LiDAR-to-LiDAR result
+
+## 1.  Data prep
+Mid360 LiDAR topics:
+```text
+/lidar/lidar_90 /livox/imu_90
+/lidar/lidar_91 /livox/imu_91
+```
+
+Start with a static scene for 2mins, and then run a FastLIO capable mapping run in a non-challenging enviroment.
+## 2. FastLIO for map generation
+Our modified FastLIO should generate the following result:
+```text
+final_map.pcd
+keyframes_lidar/*.pcd
+keyframe_poses_lidar.csv
+keyframe_poses_optimized_lidar.csv
+trajectory_scan_poses_lidar.csv
+```
+We are going to use all 3 (keyframe, trajectory, and map) sourcs to cross validate the calibration quality.
+## 3. Run all three LiDAR calibration methods
+The script needs Python 3, NumPy, and SciPy. Run:
+```bash
+python3 calibrate_lidar_extrinsics.py \
+--lidar90-dir lidar_90/attempt_001 \
+--lidar91-dir lidar_91/attempt_001 \
+--trajectory-pairs calibration_ready/trajectory_pairs_lidar.csv \
+--output-dir calibration_results \
+--map-voxel-size 0.25 \
+--scan-tolerance-ms 5 \
+--max-scan-pairs 60
+```
+All arguments above are the defaults, so this is equivalent:
+```bash
+python3 calibrate_lidar_extrinsics.py
+```
+It does calibration in 3 ways: 
+1. Trajectory-to-trajectory hand-eye calibration (`AX = XB`).
+2. Accumulated-map point-to-plane ICP
+3. Joint point-to-plane ICP over synchronized keyframe scans. 
+
+**The synchronized scan result is the deployed result, everything else is for crossing checking**
+
+Calibration result:
+```text
+calibration_results/extrinsic_lidar91_to_lidar90.yaml
+calibration_results/calibration_report.json
+calibration_results/map_overlay_downsampled.ply
+``` 
+# Part 2 — Camera-to-LiDAR
+## 1. Data prep
+At each pose: stop the vehicle, wait for vibration to settle, then record for 10-15 seconds. **Never drive during a bag, drive only between bags**. Ensure that the tags or corners are visble in lidar, our experience is put Tags on transparent glass. Required topics:
+```bash
+/camera/color/image_raw/compressed \
+/camera/color/camera_info \
+/lidar/lidar_90 \
+/lidar/lidar_91
+```
+## 2. Preprocess - converting bag into required format
+```bash
+cd /home/shuoyuan/tools/direct_visual_lidar_calibration-main
+source /opt/ros/humble/setup.bash
+source /home/shuoyuan/ros2_anto_ws/install/setup.bash
+
+./docker/vlcal.sh preprocess \
+/home/shuoyuan/vlcal_data/bags \
+/home/shuoyuan/vlcal_data/preprocessed_lidar91 \
+/lidar/lidar_91 \
+/camera/color/image_raw/compressed \
+/camera/color/camera_info
+```
+## 3. Make and save the manual initial alignment
+```bash
+./docker/vlcal.sh manual /home/shuoyuan/vlcal_data/preprocessed_lidar91
+```
+In the GUI:
+
+1. Pick the same feature in the point cloud and image.
+2. Click **Add picked points**.
+3. Repeat for 6–10 features spread over the field of view and depth range.
+4. Click **Estimate**.
+5. Inspect the blended image and then click **Save**.
+
+Back up the good manual result before optional refinement, **sometimes optimisation makes it worse!**:
+```bash
+cp /home/shuoyuan/vlcal_data/preprocessed_lidar91/calib.json \
+/home/shuoyuan/vlcal_data/preprocessed_lidar91/calib.manual.json
+```
+## 4. Refine, compare, and accept or reject
+```bash
+./docker/vlcal.sh calibrate-headless \
+/home/shuoyuan/vlcal_data/preprocessed_lidar91
+./docker/vlcal.sh viewer \
+/home/shuoyuan/vlcal_data/preprocessed_lidar91
+```
+The JSON array order is:
+```text
+results.T_lidar_camera = [x, y, z, qx, qy, qz, qw]
+```
+
+```text
+p_lidar91 = T_lidar91_camera * p_camera
+```
+
+**Accept only after visual checks:
+
+```text
+sudo ./docker/vlcal.sh calibrate-headless /home/shuoyuan/vlcal_data/preprocessed_lidar91
+```
+
+once accepted, copy it into LL calibration project folder: `calibration_vision_lidar91/calib.json` 
+# Part 3 — Generating final URDF
+Run:
+```bash
+./generate_three_sensor_urdf.py
+```
+It reads these source results directly:
+```text
+calibration_results/extrinsic_lidar91_to_lidar90.yaml
+calibration_vision_lidar91/calib.json
+```
+and generates:
+```text
+three_sensor_overlay/urdf/u701_three_sensor_extrinsics.urdf
+three_sensor_overlay/urdf/u701_three_sensor_extrinsics.urdf.xacro
+```
+# Part 4 — Replay overlay for double checking
+```bash
+./run_three_sensor_overlay.sh
+```
+Override only when using a different target:
+```bash
+TAG_SIZE_M=0.0872 ./run_three_sensor_overlay.sh
+```
+The replay reads both calibration files directly not a URDF
+Color and depth intrinsics come from `/camera/color/camera_info` and
+`/camera/depth/camera_info` 
+The bag does not contain the factory color-to-depth TF, so the script uses a identity TF. 

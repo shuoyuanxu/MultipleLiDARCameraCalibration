@@ -4,3 +4,4 @@ site/*
 *.ply
 __pycache__/
 *.py[cod]
+*.gitignore
