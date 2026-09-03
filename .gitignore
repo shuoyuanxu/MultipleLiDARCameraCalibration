@@ -1,0 +1,6 @@
+site/*
+
+# Generated calibration point clouds and Python caches
+*.ply
+__pycache__/
+*.py[cod]

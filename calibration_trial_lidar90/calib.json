@@ -1,0 +1,31 @@
+{
+  "camera": {
+    "camera_model": "plumb_bob",
+    "distortion_coeffs": [
+      -0.03171162307262421,
+      0.03554766625165939,
+      -0.0005824600229971111,
+      -0.00017896253848448396,
+      -0.012567325495183468,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "intrinsics": [
+      610.8165283203125,
+      610.7088012695313,
+      639.3026123046875,
+      362.2261962890625
+    ]
+  },
+  "meta": {
+    "bag_names": [
+      "U701_0901_compressed"
+    ],
+    "camera_info_topic": "/camera/color/camera_info",
+    "data_path": "/data/input",
+    "image_topic": "/camera/color/image_raw/compressed",
+    "intensity_channel": "intensity",
+    "points_topic": "/lidar/lidar_90"
+  }
+}
